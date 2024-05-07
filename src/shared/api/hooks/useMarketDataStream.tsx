@@ -32,7 +32,7 @@ export default function useMarketDataStream({ figi }: { figi: string }) {
 				withCredentials: true,
 				protocols: 'json',
 				extraHeaders: {
-					'Access-Control-Allow-Origin': 'https://localhost:5173/',
+					'Access-Control-Allow-Origin': 'https://stock-exchange-seep.vercel.app',
 				},
 				auth: {
 					token: authKey,
