@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { authKey } from '../apiKey';
-import axios from 'axios';
 import { io } from 'socket.io-client';
 
 export default function useMarketDataStream({ figi }: { figi: string }) {
-	const [marketDataStream, setMarketDataStream] = useState();
+	const [marketDataStream] = useState();
 
 	const apiPath =
 		'wss://invest-public-api.tinkoff.ru/ws/tinkoff.public.invest.api.contract.v1.MarketDataStreamService/MarketDataStream';
@@ -43,7 +42,7 @@ export default function useMarketDataStream({ figi }: { figi: string }) {
 
 			console.log(socket);
 
-			socket.io.on('error', (error) => {
+			socket.io.on('error', () => {
 				socket.disconnect();
 			});
 

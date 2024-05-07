@@ -2,11 +2,9 @@ import { useEffect, useState } from 'react';
 import './App.scss';
 import { Select } from '@mantine/core';
 import useSearchTickers from './shared/api/hooks/useSearchTickers';
-import useMarketData from './shared/api/hooks/useMarketData';
 import { Chart, LinearScale } from 'chart.js/auto';
 import ChartLine from './feature/ChartLine/ChartLine';
 import { IChratInfo } from './shared/types';
-import { authKey } from './shared/api/apiKey';
 import useMarketDataStream from './shared/api/hooks/useMarketDataStream';
 
 Chart.register(LinearScale);
@@ -15,7 +13,7 @@ export default function App() {
 	const [searchText, setSearchText] = useState('');
 	const [selectedTicker, setSelectedTicker] = useState('');
 	const [marketDataParams, setMarketDataParams] = useState('');
-	const [chratInfo, setChartInfo] = useState<IChratInfo[]>([]);
+	const [chratInfo] = useState<IChratInfo[]>([]);
 
 	const tickers = useSearchTickers({ searchText });
 
@@ -29,7 +27,7 @@ export default function App() {
 
 	// const candles = useMarketData({ figi: marketDataParams });
 
-	const streamDataMarket = useMarketDataStream({ figi: marketDataParams });
+	useMarketDataStream({ figi: marketDataParams });
 
 	// useEffect(() => {
 	// 	console.log(candles);
