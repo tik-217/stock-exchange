@@ -4,7 +4,7 @@ import { authKey } from '../apiKey';
 
 export default function useSearchTickers({ searchText }: { searchText: string }) {
 	const [tickers, setTickers] = useState<Instruments>();
-	const [instrumentType, setInstrumentType] = useState('INSTRUMENT_TYPE_SHARE');
+	const [instrumentType] = useState('INSTRUMENT_TYPE_SHARE');
 
 	const apiPath =
 		'https://invest-public-api.tinkoff.ru/rest/tinkoff.public.invest.api.contract.v1.InstrumentsService/FindInstrument';
