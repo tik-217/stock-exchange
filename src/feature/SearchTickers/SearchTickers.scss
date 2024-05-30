@@ -1,0 +1,11 @@
+.search-tickers {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	max-width: 600px;
+
+	&__searchInput {
+		margin: 40px 0;
+		width: 100%;
+	}
+}

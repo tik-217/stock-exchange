@@ -1,0 +1,17 @@
+.chratLine {
+	width: 100%;
+	margin-bottom: 25px;
+
+	&__wrap {
+		width: 100%;
+	}
+
+	&_overlay {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		height: fit-content;
+		padding: 0 40px;
+		box-sizing: border-box;
+	}
+}

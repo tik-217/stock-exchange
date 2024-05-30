@@ -1,0 +1,33 @@
+.tickers-info {
+	max-width: 600px;
+	width: 100%;
+
+	&__title {
+		margin-bottom: 20px;
+	}
+
+	&__wrap {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+	}
+
+	&__company,
+	&__sector {
+		h3 {
+			color: #636363;
+		}
+	}
+
+	&__company {
+		margin-bottom: 20px;
+	}
+
+	&__img img {
+		display: flex;
+
+		height: 100px;
+		border-radius: 50%;
+	}
+}

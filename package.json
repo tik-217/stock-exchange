@@ -10,17 +10,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mantine/core": "^7.9.0",
-    "@mantine/hooks": "^7.9.0",
+    "@mantine/core": "^7.9.1",
+    "@mantine/hooks": "^7.9.1",
+    "@tabler/icons-react": "^3.5.0",
     "@vitejs/plugin-basic-ssl": "^1.1.0",
     "axios": "^1.6.8",
-    "chart.js": "^4.4.2",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
+    "highcharts": "^11.4.1",
+    "highcharts-react-official": "^3.2.1",
+    "iso-country-currency": "^0.7.2",
+    "mobx-react-lite": "^4.0.7",
     "react": "^18.2.0",
-    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
-    "socket.io-client": "^4.7.5"
+    "react-router": "^6.23.1",
+    "react-router-dom": "^6.23.1"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin-js": "^1.7.2",
