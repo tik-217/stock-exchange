@@ -8,7 +8,9 @@ import highchartsAccessibility from 'highcharts/modules/accessibility';
 
 // mobx
 import { observer } from 'mobx-react-lite';
-import { toJS } from 'mobx';
+
+// feature
+import { chartOptions } from '@/feature/ChartLine/ChartLine.ui';
 
 // shared
 import store from '@/shared/store/store';
@@ -19,7 +21,6 @@ import { useDisclosure } from '@mantine/hooks';
 
 // styles
 import './ChartLine.scss';
-import { chartOptions } from './ChartLine.ui';
 
 highchartsAccessibility(Highcharts);
 
@@ -27,8 +28,8 @@ const ChartLine = observer(() => {
 	const [visible, setVisible] = useDisclosure(true);
 
 	useEffect(() => {
-		toJS(store.candles).loadingStatus ? setVisible.open() : setVisible.close();
-	}, [toJS(store.candles).loadingStatus]);
+		store.candles.loadingStatus ? setVisible.open() : setVisible.close();
+	}, [store.candles.loadingStatus]);
 
 	const allPrices = store.candles.data.map((el) => [new Date(el.time).getTime(), +el.cost]);
 

@@ -11,9 +11,6 @@ import ChartWrap from '@/widgets/ChartWrap/ChartWrap';
 import SearchTickers from '@/feature/SearchTickers/SearchTickers';
 import TickersInfo from '@/feature/TickersInfo/TickersInfo';
 
-// entities
-import AppMode from '@/entities/AppMode/AppMode';
-
 // shared
 import store from '@/shared/store/store';
 
@@ -30,11 +27,15 @@ const Main = observer(() => {
 		store.setTickersInfo();
 	}, [store.selectedTicker]);
 
+	useEffect(() => {
+		store.setExchangeStatus();
+	}, []);
+
 	return (
 		<div className="tickers">
-			<AppMode />
+			<h2 className="tickers-title">Бирживой поиск ценных бумаг</h2>
 			<SearchTickers />
-			{store.selectedTicker.length === 0 ? (
+			{store.selectedTicker.length === 0 || store.searchText.length === 0 ? (
 				<>Данные об эмитенте</>
 			) : (
 				<>

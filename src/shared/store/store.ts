@@ -2,13 +2,14 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 
 // pages
-import { ISelectedTicker } from '@/pages/Main/Main.types';
+import { ISelectedTicker } from '@/shared/types';
 
 // shared
 import initialState from '@/shared/store/initialState';
 import { historyExh } from '@/shared/api/restApi/historyExh';
 import { getInstrumentInfo } from '@/shared/api/restApi/getInstrumentInfo';
 import { searchInstrumets } from '@/shared/api/restApi/searchInstrumets';
+import { getTradingSchedules } from '@/shared/api/restApi/getTradingSchedules';
 
 class GlobalStorage {
 	candles = initialState.candles;
@@ -18,9 +19,18 @@ class GlobalStorage {
 	selectedTicker = initialState.selectedTicker;
 	searchText = initialState.searchText;
 	tickerName = initialState.tickerName;
+	exchangeStatus = initialState.exchangeStaus;
 
 	constructor() {
 		makeAutoObservable(this);
+	}
+
+	async setExchangeStatus() {
+		const res = await getTradingSchedules();
+
+		runInAction(() => {
+			res && res && (this.exchangeStatus = res);
+		});
 	}
 
 	async setCandleHistory() {

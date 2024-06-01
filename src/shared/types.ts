@@ -1,8 +1,8 @@
-export interface Instruments {
-	instruments: Instrument[];
+export interface IInstruments {
+	instruments: IInstrument[];
 }
 
-export interface Instrument {
+export interface IInstrument {
 	isin: string;
 	figi: string;
 	ticker: string;
@@ -21,17 +21,17 @@ export interface Instrument {
 	blockedTcaFlag: boolean;
 }
 
-export interface Candles {
-	candles: Candle[];
+export interface ICandles {
+	candles: ICandle[];
 }
 
-export interface Candle {
+export interface ICandle {
 	volume: string;
-	high: CnadleCost;
-	low: CnadleCost;
+	high: ICnadleCost;
+	low: ICnadleCost;
 	time: string;
-	close: CnadleCost;
-	open: CnadleCost;
+	close: ICnadleCost;
+	open: ICnadleCost;
 	isComplete: boolean;
 }
 
@@ -62,7 +62,7 @@ export interface IInstrumentInfoProps {
 	otcFlag: boolean;
 	buyAvailableFlag: boolean;
 	sellAvailableFlag: boolean;
-	minPriceIncrement: CnadleCost;
+	minPriceIncrement: ICnadleCost;
 	apiTradeAvailableFlag: boolean;
 	uid: string;
 	realExchange: string;
@@ -82,7 +82,12 @@ export interface IInstrumentInfoProps {
 	};
 }
 
-interface CnadleCost {
+interface ICnadleCost {
 	nano: number;
 	units: string;
+}
+
+export interface ISelectedTicker {
+	figi: string;
+	instrumentId: string;
 }

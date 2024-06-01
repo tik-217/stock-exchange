@@ -1,11 +1,10 @@
-// mobx
-import { toJS } from 'mobx';
-
 // shared
 import { IInstrumentInfoProps } from '@/shared/types';
 
 export function createLogo(informAboutTheTool: IInstrumentInfoProps, name: string) {
-	const imageName = toJS(informAboutTheTool).brand.logoName.split('.');
+	if (!name.length) return;
+
+	const imageName = informAboutTheTool.brand.logoName.split('.');
 
 	return (
 		<>

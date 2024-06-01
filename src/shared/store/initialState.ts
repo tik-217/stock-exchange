@@ -83,6 +83,18 @@ const initialState = {
 		loadingStatus: true,
 	},
 	tickerName: '',
+	exchangeStaus: {
+		moex: {
+			isTrading: true,
+			startTime: '',
+			endTime: '',
+		},
+		spb: {
+			isTrading: true,
+			startTime: '',
+			endTime: '',
+		},
+	},
 };
 
 export default initialState;

@@ -4,21 +4,12 @@ import { observer } from 'mobx-react-lite';
 // shared
 import store from '@/shared/store/store';
 import { createLogo } from '@/shared/helpers/createLogo';
+import { declareExchange } from '@/shared/helpers/declareExchange';
 
 // styles
 import './TickersInfo.scss';
 
 const TickersInfo = observer(() => {
-	function declareExchange() {
-		const exchange = store.informAboutTheTool.data.exchange.toLocaleLowerCase();
-
-		if (exchange.includes('moex')) {
-			return 'Московская Биржа';
-		} else if (exchange.includes('spb')) {
-			return 'СПБ Биржа';
-		}
-	}
-
 	return (
 		<div className="tickers-info">
 			<div className="tickers-info__companyBlock">

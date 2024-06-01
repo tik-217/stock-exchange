@@ -1,10 +1,10 @@
-import { Instrument, Instruments } from '@/shared/types';
+import { IInstrument, IInstruments } from '@/shared/types';
 import { axiosConfig, findInstrument } from './api';
 
 export const searchInstrumets = async (searchText: string) => {
 	if (!searchText.length) return;
 
-	let response: Instrument[] = [];
+	let response: IInstrument[] = [];
 	let loading = false;
 
 	const instrumentType = 'INSTRUMENT_TYPE_UNSPECIFIED';
@@ -17,7 +17,7 @@ export const searchInstrumets = async (searchText: string) => {
 
 	loading = true;
 
-	await axiosConfig<Instruments>(findInstrument, {
+	await axiosConfig<IInstruments>(findInstrument, {
 		data: bodyRequest,
 	})
 		.then(({ data }) => (response = data.instruments))

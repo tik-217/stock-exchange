@@ -1,10 +1,10 @@
-import { Candles } from '@/shared/types';
+import { ICandles } from '@/shared/types';
 import { axiosConfig, getCandlesApi } from '@/shared/api/restApi/api';
 
 export const historyExh = async ({ figi, instrumentId }: { figi: string; instrumentId: string }) => {
 	if (!figi.length || !instrumentId.length) return;
 
-	let candles: Candles = { candles: [] };
+	let candles: ICandles = { candles: [] };
 	let response = [
 		{
 			id: 0,
@@ -15,13 +15,13 @@ export const historyExh = async ({ figi, instrumentId }: { figi: string; instrum
 	let candlesIsLoading = false;
 
 	let startDate = new Date();
-	startDate.setDate(startDate.getDate() - 1);
+	startDate.setFullYear(startDate.getFullYear() - 1);
 
 	const bodyRequest = {
 		figi,
 		from: startDate.toISOString(),
 		to: new Date().toISOString(),
-		interval: 'CANDLE_INTERVAL_10_MIN',
+		interval: 'CANDLE_INTERVAL_DAY',
 		instrumentId,
 	};
 

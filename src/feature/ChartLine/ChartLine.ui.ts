@@ -1,7 +1,19 @@
 import { getParamByISO } from 'iso-country-currency';
+import { statusExchange } from '@/shared/helpers/statusExchange';
 
 export function chartOptions(allPrices: number[][], selectedTicker: string, currency: string) {
-	const titleText = `${selectedTicker} | ${allPrices[allPrices.length - 1][1]} ${currency && getParamByISO(currency, 'symbol')}`;
+	const exchStatus = statusExchange();
+	let titleText = '';
+
+	if (allPrices.length) {
+		titleText = `
+			${selectedTicker} |
+			${allPrices[allPrices.length - 1][1]} 
+			${currency && getParamByISO(currency, 'symbol')}
+		`;
+	} else {
+		titleText = selectedTicker;
+	}
 
 	return {
 		time: {
@@ -19,7 +31,10 @@ export function chartOptions(allPrices: number[][], selectedTicker: string, curr
 			align: 'left',
 		},
 		subtitle: {
-			text: `${allPrices[allPrices.length - 1][1]}`,
+			text: exchStatus.status,
+			style: {
+				color: exchStatus.isTrading ? '#0ec548' : '#ec2e2e',
+			},
 			align: 'left',
 		},
 		lang: {
@@ -64,6 +79,40 @@ export function chartOptions(allPrices: number[][], selectedTicker: string, curr
 		tooltip: {
 			pointFormat: 'цена = {point.y}',
 		},
+		rangeSelector: {
+			selected: 1,
+			buttons: [
+				{
+					type: 'month',
+					count: 1,
+					text: '1m',
+					title: 'View 1 month',
+				},
+				{
+					type: 'month',
+					count: 3,
+					text: '3m',
+					title: 'View 3 months',
+				},
+				{
+					type: 'month',
+					count: 6,
+					text: '6m',
+					title: 'View 6 months',
+				},
+				{
+					type: 'ytd',
+					text: 'YTD',
+					title: 'View year to date',
+				},
+				{
+					type: 'year',
+					count: 1,
+					text: '1y',
+					title: 'View 1 year',
+				},
+			],
+		},
 		series: [
 			{
 				data: allPrices,
@@ -72,8 +121,5 @@ export function chartOptions(allPrices: number[][], selectedTicker: string, curr
 				},
 			},
 		],
-		navigator: {
-			enabled: false,
-		},
 	};
 }

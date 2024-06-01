@@ -1,3 +1,6 @@
+// react
+import { memo } from 'react';
+
 // mantine
 import { Switch, useMantineTheme, rem, useMantineColorScheme, useComputedColorScheme } from '@mantine/core';
 import { IconSun, IconMoonStars } from '@tabler/icons-react';
@@ -5,8 +8,9 @@ import { IconSun, IconMoonStars } from '@tabler/icons-react';
 // styles
 import './AppMode.scss';
 
-export default function AppMode() {
+export default memo(function AppMode() {
 	const theme = useMantineTheme();
+
 	const { setColorScheme } = useMantineColorScheme({
 		keepTransitions: true,
 	});
@@ -33,4 +37,4 @@ export default function AppMode() {
 			/>
 		</div>
 	);
-}
+});

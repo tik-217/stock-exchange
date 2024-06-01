@@ -19,4 +19,6 @@ const findInstrument = '/tinkoff.public.invest.api.contract.v1.InstrumentsServic
 
 const apiInstrumentInfo = '/tinkoff.public.invest.api.contract.v1.InstrumentsService/GetInstrumentBy';
 
-export { axiosConfig, getCandlesApi, findInstrument, apiInstrumentInfo };
+const apiTradingSchedules = '/tinkoff.public.invest.api.contract.v1.InstrumentsService/TradingSchedules';
+
+export { axiosConfig, getCandlesApi, findInstrument, apiInstrumentInfo, apiTradingSchedules };
